@@ -45,8 +45,12 @@ pod to send traffic to. Its only job here is to give the pod a stable external I
 Integration Connectors (Toronto, 2 nodes), each fed by an Application Integration
 flow: Cloud Pub/Sub trigger, Data Mapping, connector task. The MySQL flow inserts
 each `smartMeterReadings` message into `SmartMeter` with the Create operation. The
-Redis flow maps the message data to the value and the ordering key to the key, so
-`produceImage.py` ends up with the base64 image stored under `image`. Both
+Redis flow creates an entry in the `Keys` entity: the ordering key goes to
+`RedisKey`, the message data to `Value`, and `RedisType` is set to the literal
+`string`, since the connector rejects a key without a data type. Publishing the
+image with `produceImage.py` stored it under `image`, and `ReceiveImage.py` wrote
+back a file identical to `ontarioTech.jpg`. The lab test messages worked: the MySQL
+test row with ID -1 appeared in `SmartMeter`, and `get test` returned `1234`. Both
 integrations were unpublished and both connectors suspended after testing.
 
 ## 3. Discussion
