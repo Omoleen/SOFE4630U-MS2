@@ -7,6 +7,16 @@
 
 **GitHub repository:** https://github.com/Omoleen/SOFE4630U-MS2
 
+**Video 1, the connectors:**
+
+- Part 1: https://www.loom.com/share/2348146f4fc14ae485fd12d52c47ce2b
+- Part 2: https://www.loom.com/share/5d33f4727c63493e8197158e6d96347b
+
+**Video 2, the design part:**
+
+- Part 1: https://www.loom.com/share/20a8afd9ab7f4fbfbde8ab97ba50a899
+- Part 2: https://www.loom.com/share/880dcfaee45b4dac8cef7a2f46a110d2
+
 ---
 
 ## 1. Environment
@@ -99,11 +109,13 @@ csvProducer.py -> weatherLabels -> storeStage.py -> weatherStored -> csvConsumer
                           MySQL on GKE (Readings.WeatherLabels)
 ```
 
-| Script | Role |
-| --- | --- |
-| `csvProducer.py` | Unchanged from Milestone 1. Publishes each CSV row as JSON to `weatherLabels`. |
-| `storeStage.py` | Subscribes to `weatherLabels-sub`, inserts the record into `WeatherLabels`, adds the generated `ID` to the record and publishes it to `weatherStored`. |
-| `csvConsumer.py` | Same consumer as Milestone 1, now subscribed to `weatherStored-sub`. |
+- `csvProducer.py`: unchanged from Milestone 1. Publishes each CSV row as JSON to
+  `weatherLabels`.
+- `storeStage.py`: subscribes to `weatherLabels-sub`, inserts the record into
+  `WeatherLabels`, adds the generated `ID` to the record and publishes it to
+  `weatherStored`.
+- `csvConsumer.py`: same consumer as Milestone 1, now subscribed to
+  `weatherStored-sub`.
 
 ### 4.2 Choices
 
